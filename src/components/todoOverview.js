@@ -20,7 +20,7 @@ export default class TodoOverview extends React.Component {
 				checked={todoStore.activeTodoCount === 0}
 			/>
 			<label htmlFor="toggle-all"></label>
-			<ul className="todo-list">
+			<ul id="TodoList" className="todo-list">
 				{this.getVisibleTodos().map(todo =>
 					(<TodoItem
 						key={todo.id}

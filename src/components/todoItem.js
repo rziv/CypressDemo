@@ -61,6 +61,9 @@ export default class TodoItem extends React.Component {
 	@action
 	handleDestroy = () => {
 		this.props.todo.destroy();
+		fetch(`http://localhost:3004/todos/${this.props.todo.id}`, {
+				method: 'DELETE'
+		});		
 		this.props.viewStore.todoBeingEdited = null;
 	};
 
@@ -86,9 +89,14 @@ export default class TodoItem extends React.Component {
 		this.editText = event.target.value;
 	};
 
-	@action
+	
 	handleToggle = () => {
 		this.props.todo.toggle();
+		fetch(`http://localhost:3004/todos/${this.props.todo.id}`, {
+				method: 'PUT',
+				body: JSON.stringify(this.props.todo.toJS()),
+				headers: new Headers({ 'Content-Type': 'application/json' })
+		})        
 	};
 }
 

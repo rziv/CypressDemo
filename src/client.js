@@ -4,13 +4,14 @@ import ViewStore from './stores/ViewStore';
 import TodoApp from './components/todoApp.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'whatwg-fetch'; // required until cypress support fetch API
+console.log("Fetching!");
 
-const initialState = window.initialState && JSON.parse(window.initialState) || {};
+fetch('http://localhost:3004/todos').then(response=>response.json()).then(initialState=> {
 
-var todoStore = TodoStore.fromJS(initialState.todos || []);
+
+var todoStore = TodoStore.fromJS(initialState || []);
 var viewStore = new ViewStore();
-
-todoStore.subscribeServerToStore();
 
 ReactDOM.render(
 	<TodoApp todoStore={todoStore} viewStore={viewStore}/>,
@@ -26,4 +27,4 @@ if (module.hot) {
     );
   });
 }
-
+});

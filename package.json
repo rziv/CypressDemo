@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node bin/server.js",
     "lint": "eslint src",
-    "build": "cross-env NODE_ENVIRONMENT=production webpack -p"
+    "build": "cross-env NODE_ENVIRONMENT=production webpack -p",    
+    "cypress": "cypress open",
+    "cypress:all": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -37,14 +39,15 @@
     "body-parser": "^1.17.2",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.4",
+    "cypress": "^3.3.1",
     "eslint-plugin-react": "^7.1.0",
     "file-loader": "^0.11.2",
+    "jest": "^24.8.0",
     "jquery": "^3.2.1",
     "react-hot-loader": "^2.0.0-alpha-4",
     "style-loader": "^0.18.2",
     "ts-loader": "^2.2.1",
     "typescript": "^2.4.1",
-    "webpack": "^3.0.0",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.0"
   },
@@ -52,6 +55,7 @@
     "classnames": "^2.2.5",
     "director": "^1.2.8",
     "express": "^4.15.3",
+    "jasmine": "^3.4.0",
     "jsesc": "^2.5.1",
     "mobx": "^4.0.0",
     "mobx-react": "^5.0.0",
@@ -62,6 +66,10 @@
     "todomvc-app-css": "^2.1.0",
     "todomvc-common": "^1.0.3",
     "url-loader": "^0.5.9",
-    "webpack-hot-middleware": "^2.18.0"
+    "webpack": "^3.11.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-hot-middleware": "^2.18.0",
+    "webpack-karma-jasmine": "^3.0.6",
+    "whatwg-fetch": "^3.0.0"
   }
 }

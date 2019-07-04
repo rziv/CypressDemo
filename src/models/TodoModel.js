@@ -1,10 +1,11 @@
-import {observable} from 'mobx';
+import {observable, action} from 'mobx';
 
 export default class TodoModel {
 	store;
 	id;
 	@observable title;
 	@observable completed;
+
 
 	constructor(store, id, title, completed) {
 		this.store = store;
@@ -13,14 +14,17 @@ export default class TodoModel {
 		this.completed = completed;
 	}
 
+	@action
 	toggle() {
 		this.completed = !this.completed;
 	}
 
+	@action
 	destroy() {
 		this.store.todos.remove(this);
 	}
 
+		@action
 	setTitle(title) {
 		this.title = title;
 	}

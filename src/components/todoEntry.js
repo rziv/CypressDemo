@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {observer} from 'mobx-react';
-import {action} from 'mobx';
+import * as Utils from '../utils';
+
 
 const ENTER_KEY = 13;
 
@@ -18,7 +19,6 @@ export default class TodoEntry extends React.Component {
 		/>);
 	}
 
-	@action
 	handleNewTodoKeyDown = (event) => {
 		if (event.keyCode !== ENTER_KEY) {
 			return;
@@ -31,6 +31,12 @@ export default class TodoEntry extends React.Component {
 		if (val) {
 			this.props.todoStore.addTodo(val);
 			ReactDOM.findDOMNode(this.refs.newField).value = '';
+
+			fetch('http://localhost:3004/todos', {
+				method: 'post',
+				body: JSON.stringify({ id: Utils.uuid(), title:val, completed:false }),
+				headers: new Headers({ 'Content-Type': 'application/json' })
+			})		
 		}
 	};
 }
