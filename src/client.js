@@ -13,6 +13,13 @@ fetch('http://localhost:3004/todos').then(response=>response.json()).then(initia
 var todoStore = TodoStore.fromJS(initialState || []);
 var viewStore = new ViewStore();
 
+
+// expose store when run in Cypress
+if (window.Cypress) {
+  window.todoStore = todoStore;
+  console.log("window.todoStore 1", window.todoStore);
+}
+
 ReactDOM.render(
 	<TodoApp todoStore={todoStore} viewStore={viewStore}/>,
 	document.getElementById('todoapp')

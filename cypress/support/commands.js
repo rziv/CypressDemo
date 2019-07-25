@@ -23,3 +23,9 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("loadApp", (data = "fixture:todos", alias="load") => {
+  cy.server();
+  cy.route("GET", "/todos", data).as(alias);
+  cy.visit("/");
+});
