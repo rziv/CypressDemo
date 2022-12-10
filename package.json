@@ -54,7 +54,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "director": "^1.2.8",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "jasmine": "^3.4.0",
     "jsesc": "^2.5.1",
     "mobx": "^4.0.0",
